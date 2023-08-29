@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REST API</title>
+</head>
+
+<body>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .form-control {
+      border: 1px solid #c6c6c6;
+      padding: 10px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .btn:disabled {
+      background-color: #989898;
+      cursor: default;
+    }
+
+    .btn-primary {
+      background-color: #385cff;
+    }
+
+    .btn-danger {
+      background-color: #ff5151;
+    }
+
+    .btns-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 12px;
+      border: 1px solid #c6c6c6;
+      border-radius: 4px;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-title {
+      margin: 0;
+    }
+
+    .card-text {
+      margin: 0;
+    }
+
+
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  <div class="container" id="app" v-cloak>
+    <h1>REST API</h1>
+
+    <form action="" method="" class="form" @submit.prevent="createContact">
+      <div class="form-group">
+        <label for="name">
+          Name
+          <input class="form-control" type="text" id="name" v-model="form.name">
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="value">
+          Value
+          <input class="form-control" type="text" id="value" v-model="form.value">
+        </label>
+      </div>
+      <button class="btn btn-primary" :disabled="!canCreate">Add</button>
+    </form>
+
+    <div v-if="loading">
+      <loader />
+    </div>
+
+    <div class="cards" v-if="contacts.length">
+      <div class="card" v-for="contact in contacts"
+        :style="{boxShadow: contact.marked ? 'inset 0px 0px 6px 0px' : '0px 0px 1px 0px'}">
+        <div class="card-body">
+          <h3 class="card-title" :style="{color: contact.marked ? 'red' : 'black'}">
+            {{contact.name}}
+          </h3>
+          <p class="card-text">
+            {{contact.value}}
+          </p>
+          <div class="btns-wrapper">
+            <button class="btn btn-primary" @click="markContact(contact.id)">Check</button>
+            <button class="btn btn-danger" @click="removeContact(contact.id)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p v-else>No contacts yet</p>
+  </div>
+
+  <script type="module" src="frontend.js"></script>
+</body>
+
+</html>
