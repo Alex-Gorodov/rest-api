@@ -2,11 +2,14 @@
   "name": "rest-api",
   "version": "1.0.0",
   "description": "rest api example",
+  "homepage": "https://alex-gorodov.github.io/rest-api/",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "node build"
+    "build": "vue-cli-service build",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "keywords": [
     "js",
@@ -16,7 +19,9 @@
   "author": "Alex",
   "license": "ISC",
   "dependencies": {
+    "@vue/cli-service": "^5.0.8",
     "express": "^4.18.2",
+    "gh-pages": "^6.0.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
