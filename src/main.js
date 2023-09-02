@@ -1,10 +1,12 @@
-Vue.component('loader', {
-  template: `
-    <div style="display:flex; justify-content: center;align-items: center">
-      Loading...
-    </div>
-  `
-})
+// const demo = new Vue();
+
+// demo.component('loader', {
+//   template: `
+//     <div style="display:flex; justify-content: center;align-items: center">
+//       Loading...
+//     </div>
+//   `
+// })
 
 new Vue({
   el: '#app',
