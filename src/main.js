@@ -1,5 +1,3 @@
-// import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.esm.browser.js';
-
 Vue.component('loader', {
   template: `
     <div style="display:flex; justify-content: center;align-items: center">
